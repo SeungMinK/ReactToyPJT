@@ -4,7 +4,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      hihi
+      <button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-secondary btn-lg">Large button</button>
     </div>
   );
 }
