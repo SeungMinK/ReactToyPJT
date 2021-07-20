@@ -15,4 +15,12 @@
 * 리엑트 전용 Bootstrap 존재
 * [ReactBootStarp](https://react-bootstrap.github.io/)
 
- 
+## 2. 파일 나누기
+* import, export
+> export
+* 중요한 변수를 export하고 싶을 땐 export default라는 문법을 쓰시고 우측에 배출을 원하는 변수를 담아줄
+* 변수명, 함수명, 자료형 전부 배출가능
+* 파일마다 export default 라는 키워드는 하나만 사용가능
+* import 변수 from '경로'
+> import
+* mport 변수명 from '경로' 불러와서 변수명.으로 데이터 바인딩해서 사용하기
