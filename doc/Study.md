@@ -23,4 +23,55 @@
 * 파일마다 export default 라는 키워드는 하나만 사용가능
 * import 변수 from '경로'
 > import
-* mport 변수명 from '경로' 불러와서 변수명.으로 데이터 바인딩해서 사용하기
+* import 변수명 from '경로' 불러와서 변수명.으로 데이터 바인딩해서 사용하기
+
+## 3. Component
+* class , function
+> 클래스 컴포넌트 작성법
+* class로 정의하고 render() 함수에서 JSX를 반환한다.
+~~~
+java
+
+import React, {Component} from 'react';
+
+class App extends Component {
+  render() {
+    const name = 'react';
+    return <div className="react">{name}</div>
+  }
+}
+
+export default App;
+~~~
+
+>> 특징
+* 1. state, lifeCycle 관련 기능사용 가능하다.
+* 2. 메모리 자원을 함수 컴포넌트보다 조금 더 사용한다.
+* 3. 임의 메서드를 정의할 수 있다.
+
+> 함수 컴포넌트 작성법
+* function 으로 정의하고 return 문에 JSX로 렌더링한다.
+~~~
+java
+
+import React from 'react';
+import './App.css';
+
+function App() {
+  const name = 'react';
+  return <div className = "react">{name}</div>
+}
+
+export default App;
+~~~
+>> 특징
+* 1. state, lifeCycle 관련 기능사용 불가능 [Hook을 통해 해결 됨]
+* 2. 메모리 자원을 함수 컴포넌트보다 덜 사용한다.
+* 3. 컴포넌트 선언이 편하다.
+
+***
+
+> 결론
+* 클래스 컴포넌트의 경우 state 기능, lifecycle 기능 사용, 임의의 메소드 정의가 가능하며 render() 함수가 꼭 필요하고 , 그 안에 JSX 를 반환해야 합니다. 
+* 함수 컴포넌트는 state 기능과 lifecycle 을 사용할 수 없었는데 이후 react hooks가 도입되면서 해결되었다. 
+** 리액트 레퍼런스에서는 함수형 컴포넌트와 Hooks를 사용하도록 권장하고 있다. **
