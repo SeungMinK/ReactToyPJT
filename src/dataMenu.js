@@ -8,14 +8,14 @@ export default[
 
 {   
     id :1,
-    title : "토마토 파스타",
+    title : "치킨 토마토 파스타",
     price : 13000
 
 },
 
 {
     id:2,
-    title : "크림 파스타",
+    title : "쉬림프 알리오 올리오 파스타",
     price : 16000
 }
 
