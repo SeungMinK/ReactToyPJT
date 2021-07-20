@@ -13,6 +13,36 @@
   }
 }
 
+
+.Jumbotron {
+
+  background-image: url('./corver.png');
+  background-size: cover;
+  height: 30%;
+  
+}
+.Jumbotron .title{
+  padding-top: 25px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-style: inherit;
+  font: bold;
+  color : white;
+  font-size: larger;
+  
+}
+
+
+
+.Jumbotron .content{
+
+ 
+  text-align: start;
+  text-align: center;
+  padding-bottom: 25px;
+  color : white;
+  font-size: small;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
