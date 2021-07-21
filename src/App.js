@@ -16,6 +16,9 @@ import Detail from './Detail';
 
 
 function App() {
+  /*
+  중요한 데이터들은 최상위 컴퍼넌트인 App에 저장해놓고 상위컴퍼넌트에서 하위컴퍼넌트로 props로 보내주는 방식으로 해야함
+  */
 
   let [menu, menuChange] = useState(menuData);
   let [foodImg, foodImgChange] = useState([food1, food2, food3]);
@@ -66,8 +69,8 @@ function App() {
       
       <Switch>
       
-      <Route path="/detail">
-        <Detail/>
+      <Route path="/detail/:id">
+        <Detail menu={menu}/>
       </Route>
       <Route path="/:id">
             <div> 아무거나 적었을때 보여주는 페이지</div>
