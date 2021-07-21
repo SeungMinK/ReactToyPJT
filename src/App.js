@@ -1,7 +1,8 @@
-import logo from './logo.svg';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import food1 from './food1.JPG';
+import food2 from './food2.png';
+import food3 from './food3.png';
 import { useState } from 'react';
 import menuData from './dataMenu';
 
@@ -14,8 +15,8 @@ import menuData from './dataMenu';
 
 function App() {
 
-  let [menu,menuChange] = useState(menuData);
-
+  let [menu, menuChange] = useState(menuData);
+  let [foodImg,foodImgChange] = useState([food1,food2,food3]);
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -34,49 +35,52 @@ function App() {
         <div className="title"> <h1>Minhouse</h1> </div>
         <div className="content">이태리 양식을 전문으로 하는 가게입니다.</div>
       </div>
-       
-      <hr/>
-        <div className="container">
-          <h1>Menu</h1>
-          <div className="row">
-            <div className="col-md-4"><img src ={food1} width="100%"/> 
-            <h4>{menu[0].title} </h4>
-            <h4>{menu[0].price}</h4>
-            </div>
+      {/*
+        Component로 만들어 첨부하기
+        Component에 데이터 바인당 완료하기
+        Component를 반복문 돌리기
+      
+       */}
 
-            <div className="col-md-4"><img src ={food1}width="100%"/> 
-            <h4>{menu[1].title}</h4>
-            <h4>{menu[1].price}</h4>
-            </div>
+      <hr />
+      <div className="container">
 
-            <div className="col-md-4"><img src ={food1} width="100%"/> 
-            <h4>{menu[2].title}</h4>
-            <h4>{menu[2].price}</h4>
-            </div>
-          
-          </div>
+        <h1>Menu</h1>
+        <div className="row">
 
-       
+
+          {
+            menu.map(function (data, index) {//map에서 두번째 파라미터는 반복횟수를 가르키는 변수가 됨
+              return (
+                <MenuCard menu2={menu[index]}index={index}foodImg={foodImg}></MenuCard>
+              )
+            }
+            )
+          }
+        </div>
+
+
 
       </div>
 
 
     </>
   );
-    function menuComponnent(props){
-      
-        return (
-        <>
-        <div>
-        <div className="col-md-4"><img src ={food1} width="100%"/> 
-            <h4>{menu[0].title} </h4>
-            <h4>{menu[0].price}</h4>
-        </div>
 
-        </div>
-        </>
-        )
-    }
+}
+
+
+function MenuCard(props) {
+  return (
+
+    <div className="col-md-4"><img src={props.foodImg[props.index]} width="100%" />
+      <h4>{props.menu2.title} </h4>
+      <h4>{props.menu2.price}</h4>
+
+    </div>
+
+  )
+
 }
 
 
