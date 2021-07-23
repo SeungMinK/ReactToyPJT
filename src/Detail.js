@@ -20,11 +20,26 @@ function Detail(p){//모듈화
     let [Ui,UiChange] = useState(true);//UI Switch
     let [inputData,inputDataChange] = useState('');
 
+
+     /*,[] 을 사용하면 useEffect()가 실행될 조건을 넣을 수 있음, 
+    이렇게 코드 작성시,
+    1. 컴포넌트가 로드 될때 한번
+    2.Ui의 State가 변경될때만 실행됨
+        * []를  주지 않을시 아무 State가 변경될때마다 실행됨
+        * []안에 조건을 작성하지 않을시 페이지가 로드될때 1번만 실행되고 더 이상 실행되지 않음
+    
+    3. setTimeout() 함수 실행시, 지정된 시간보다 사용자가 먼저 페이지를 벗어날 경우 에러가 발생할 수 있음
+        -> useEffect() 안에 return 부분은, 컴포넌트를 벗어날 경우 실행되는 코드임
+        -> return에 clearTimeout()함수를 작성하여 페이지를 벗어날 경우 timmer도 종료시켜줘야함 
+    */
     useEffect(()=>{
 
-        setTimeout(()=>{UiChange(false)},2000);
+        let timmer = setTimeout(()=>{UiChange(false)},2000);
+        console.log('useEffect실행');
+        return ()=>{clearTimeout(timmer)}//
+    },[Ui]);
+   
 
-    });
 
     return(
         <div>
@@ -36,12 +51,12 @@ function Detail(p){//모듈화
                 <span>5호선 강일역에 내리셔서 3번 출구로 100m 직진 후 2층 상가에 위치하고있습니다.</span>
             </div>
 
-            <input onChange={(e)=>{inputDataChange(e.target.value)}}/>
             {/*
             여기서 onChnge()는 input 박스가 바뀔때 마다 실행하는 함수
             e는 이벤트 객체
             e.target.value => input에 현재 입력된 값
             */}
+            <input onChange={(e)=>{inputDataChange(e.target.value)}}/>
             {inputData}
             
             <button onClick = {()=>{
