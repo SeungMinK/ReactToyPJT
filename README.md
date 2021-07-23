@@ -188,3 +188,64 @@ let history = useHistory();
 let {id} = useParams();
 ~~~
 * URL에 적혀있는 모든 파라미터를 {파라미터1,파라미터2...} 으로 저장해주는 함수(hook)
+
+>useEffect
+ * Component의 LifeCycle에 hook을 걸때 사용
+ * hook을 이용해 Component에게 로드 될때, 사라지기전에, State가 업데이트 될때 명령을 내릴 수 있음
+ * hook의 정확한 명칭은 LifeCycle
+ * 기존 Class로 Component를 만들어서 사용할 경우 아래와 같이 사용
+ ~~~
+class Detail2 extends React.Component {
+  componentDidMount(){
+    //Detail2 컴포넌트가 Mount 되고나서 실행할 코드
+  }
+  componentWillUnmount(){
+    //Detail2 컴포넌트가 Unmount 되기전에 실행할 코드
+  }
+}
+ ~~~
+ 
+ * function 컴포넌트로 생성 시, 아래와 같이 사용
+ ~~~
+import React, {useState, useEffect} from 'react';
+
+function Detail(){
+
+  useEffect(()=>{
+    //코드를 적습니다 여기
+  });
+  
+  return (
+    <HTML많은곳/>
+  )
+}
+
+ ~~~
+
+* useEffect(()=>{//allowFunction},[]) 으로 작성시 [] 안에 useEffect()가 실행될 조건을 넣을 수 있음
+* useEffect()가 실행되는 경우 
+    1. 컴포넌트가 로드 될때 한번
+    2. State가 변경될때 실행됨
+        * []를 작성하지 않을시, 아무 State가 변경될때마다 실행됨
+        * []안에 조건을 작성시, 조건에 맞는 State가 변경될때만 실행됨
+        * []안에 조건을 작성하지 않을시, 페이지가 로드될때 1번만 실행되고 더 이상 실행되지 않음
+    3. 컴포넌트가 종료될때
+        * return 으로 작성된 코드부분 실행
+* 여러개의 useEffect()함수 작성 가능함, 위에서 부터 순차적으로 실행
+
+* UI 를 일정 시간이 지나면 변경해야할 일이 많은데, 아래와 같이 작성하면 됨
+~~~
+/* 
+    1. Ui State 생성
+    2. 지정된 시간이 지나면 Ui State를 false 처리
+    3. return에 clearTimeout() 함수를 사용하여, 지정된 시간이 지나기전에 홈페이지가 변경될 경우 SetTimeout() 함수가 발생시키는 에러 방지
+*/
+let [Ui,UiChange] = useState(true);//UI Switch
+
+useEffect(()=>{
+
+        let timmer = setTimeout(()=>{UiChange(false)},2000);
+        return ()=>{clearTimeout(timmer)}//
+    },[Ui]);
+
+~~~
