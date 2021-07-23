@@ -184,3 +184,4 @@ let history = useHistory();
 let {id} = useParams();
 ~~~
 * URL에 적혀있는 모든 파라미터를 {파라미터1,파라미터2...} 으로 저장해주는 함수(hook)
+
