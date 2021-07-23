@@ -249,3 +249,15 @@ useEffect(()=>{
     },[Ui]);
 
 ~~~
+
+## 5. Ajax
+* 서버에 새로고침 없이 요청을 할 수 있게 도와주는 코드
+* 사용법
+    1. jQuery 설치 후, $.ajax()
+    2. axios 설치 후, axios.get() => 리엑트 개발 환경에선 많이 사용 + 호환성 및 참고할 문서도 많음
+    3. Javascript 문법, fetch() 
+* 설치
+~~~
+npm install axios
+~~~
+
