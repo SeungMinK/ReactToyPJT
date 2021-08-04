@@ -20,6 +20,7 @@ function Detail(p) {//모듈화
     let history = useHistory();//이동햇던 방문기록을 저장해놓는 object
     let [Ui, UiChange] = useState(true);//UI Switch
     let [inputData, inputDataChange] = useState('');
+    let [Lodding_Ui, Lodding_Ui_UiChange] = useState(true);//UI Switch
 
 
     /*,[] 을 사용하면 useEffect()가 실행될 조건을 넣을 수 있음, 
@@ -43,6 +44,7 @@ function Detail(p) {//모듈화
 
 
     return (
+       
         <div>
             <div className='red'>Detail</div>
 
@@ -68,21 +70,38 @@ function Detail(p) {//모듈화
             {/*
             fetch()와 axios의 가장 큰 차이점은 axios()는 json으로 받은 데이터들을 Object로 알아서 바꿔줌 
             */}
+            
             <button onClick={() => {
+                
+              
+
                 //지금은 서버가 없어서, 코딩애플에서 만들어준 서버 사용
                 axios.get('https://codingapple1.github.io/shop/data2.json')
                     .then((dataResult) => {
                         console.log(dataResult.data[0].price);
+                        
                         console.log('요청 성공');
+                        Lodding_Ui_UiChange(false);
 
                     }) //성공햇을때
                     .catch(() => {
                         console.log('요청 실패');
+                        Lodding_Ui_UiChange(false);
                     }); //실패했을때
             }}>더보기</button>
         </div>
 
     )
 }
+
+function LoddingBar(props) {
+    return (
+  
+      <div className="col-md-4">
+          <h1>Ajax 데이터 가져오는중</h1>
+      </div>
+    )
+}
+   
 
 export default Detail;//Detail 함수를 외부에서 호출 할 수 있음
